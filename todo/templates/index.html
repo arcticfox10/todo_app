@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block  content %}
+ <form action ="/create/" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+
+        <input type="submit" value=" Добавить задачу">
+
+</form>
+ {% for t in  tasks1 %}
+ <p>
+    <mark> {{t.header}} :</mark> {{ t.desc}} ||| {{ t.data}}
+    <h1>{{t.status}}                </h1>
+         <div><form action="done/{{ t.id}}/" method="post" >
+            {% csrf_token %}
+                <input type = "submit" value="done">
+        </form>
+    </div> 
+ <p>
+ 
+ 
+ 
+ {% endfor %} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock  %}
